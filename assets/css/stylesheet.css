@@ -1,0 +1,10 @@
+:-webkit-full-screen {
+	 position: fixed;
+	 width: 100%;
+	 top: 0;
+	 background: none;
+ }
+
+video::-webkit-media-controls { display:none !important; }
+
+.video-controls { z-index:2147483647; }
