@@ -21,20 +21,41 @@ if(Hls.isSupported()){
 	// wait for video to finish loading metadata
 	video.onloadedmetadata = function(){
 		document.getElementById("seek-bar").max = video.duration;
+		document.getElementById("loadedTotal").textContent = calculatedTime(video.duration);
 	};
 
 	// control-bar time left
 	video.addEventListener('timeupdate', function(){
-		var time = this.currentTime;
-		var seconds = Math.round(time);
-		var minutes = Math.round(seconds / 60);
-		var hours = Math.round(minutes / 60);
+		var videoTime = this.currentTime;
 
-		document.getElementById("loadedPercent").textContent = ("0" + hours).slice(-2) + ":" + ("0" + minutes % 59).slice(-2) + ":" + ("0" + seconds % 59).slice(-2);
+
+		document.getElementById("loadedPercent").textContent = calculatedTime(videoTime);
 
 		//seekbar
 		document.getElementById("seek-bar").value = video.currentTime;
 	});
+
+	function calculatedTime(time){
+		var seconds = Math.round(time);
+		var minutes = Math.round(seconds / 60);
+		var hours = Math.round(minutes / 60);
+		var totalTime = "";
+
+		if(hours !== 0)
+			totalTime += ("0" + hours).slice(-2) + ":";
+
+		if(minutes == 0)
+			totalTime += "0" + ":";
+		else if (hours !== 0)
+			totalTime += ("0" + minutes % 59).slice(-2) + ":";
+		else
+			totalTime += (minutes % 59) + ":";
+
+		totalTime += ("0" + seconds % 59).slice(-2);
+
+		return totalTime;
+	}
+
 
 	// play pause button
 	var playToggle = true;
@@ -73,7 +94,6 @@ if(Hls.isSupported()){
 	//user set volume bar
 	function volumeBar(bar){
 		video.volume = bar.value;
-		console.log(bar.value);
 	}
 
 	//config menu quality dropdown
