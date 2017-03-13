@@ -27,12 +27,16 @@ if(Hls.isSupported()){
 	// control-bar time left
 	video.addEventListener('timeupdate', function(){
 		var videoTime = this.currentTime;
-
+		
+		if(videoTime > 99.9){
+			playPause();
+			this.currentTime = 0;
+		}
 
 		document.getElementById("loadedPercent").textContent = calculatedTime(videoTime);
 
 		//seekbar
-		document.getElementById("seek-bar").value = video.currentTime;
+		document.getElementById("seek-bar").value = this.currentTime;
 	});
 
 	function calculatedTime(time){
@@ -60,12 +64,16 @@ if(Hls.isSupported()){
 	// play pause button
 	var playToggle = true;
 	document.getElementById("play-pause").addEventListener("click", function(){
+		playPause();
+	});
+
+	function playPause(){
 		if(playToggle)
 			video.play();
 		else
 			video.pause();
 		playToggle = !playToggle;
-	});
+	}
 
 	//config menu autoplay
 	var autplayToggle = false;
