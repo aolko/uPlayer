@@ -27,8 +27,8 @@ if(Hls.isSupported()){
 	// control-bar time left
 	video.addEventListener('timeupdate', function(){
 		var videoTime = this.currentTime;
-		
-		if(videoTime > 99.9){
+
+		if(videoTime > 99.99){
 			playPause();
 			this.currentTime = 0;
 		}
@@ -40,9 +40,10 @@ if(Hls.isSupported()){
 	});
 
 	function calculatedTime(time){
-		var seconds = Math.round(time);
-		var minutes = Math.round(seconds / 60);
-		var hours = Math.round(minutes / 60);
+		console.log(time);
+		var seconds = Math.floor(time);
+		var minutes = Math.floor(seconds / 60);
+		var hours = Math.floor(minutes / 60);
 		var totalTime = "";
 
 		if(hours !== 0)
@@ -51,11 +52,11 @@ if(Hls.isSupported()){
 		if(minutes == 0)
 			totalTime += "0" + ":";
 		else if (hours !== 0)
-			totalTime += ("0" + minutes % 59).slice(-2) + ":";
+			totalTime += ("0" + minutes % 60).slice(-2) + ":";
 		else
-			totalTime += (minutes % 59) + ":";
+			totalTime += (minutes % 60) + ":";
 
-		totalTime += ("0" + seconds % 59).slice(-2);
+		totalTime += ("0" + seconds % 60).slice(-2);
 
 		return totalTime;
 	}
