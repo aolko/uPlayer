@@ -136,7 +136,7 @@ video::-webkit-media-controls {
       .player-wrap .player-controlbar .player-controls .player-controls-right {
         float: right;
         height: 100%; }
-    .player-wrap .player-controlbar.fullscreen {
-      z-index: 2147483647; }
+    .player-wrap .player-controlbar.fullscreen{
+      z-index:2147483647; }
 
 /*# sourceMappingURL=style.css.map */

@@ -129,7 +129,7 @@ if(Hls.isSupported()){
 	}
 
 	//fullscreen button
-	var fullscreen = document.getElementById("full-screen");
+	var fullscreen = document.getElementById("fullscreen");
 	var fullScreenEnabled = !!(document.fullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled || document.webkitSupportsFullscreen || document.webkitFullscreenEnabled || document.createElement('videos').webkitRequestFullScreen);
 	if(!fullScreenEnabled){
 		fullscreen.style.display = 'none';
@@ -141,12 +141,14 @@ if(Hls.isSupported()){
 
 	fullscreen.addEventListener("click", function(){
 		if(isFullScreen()){
+			$(".player-controlbar").removeClass("fullscreen");
 			if(document.exitFullscreen) document.exitFullscreen();
 			else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
 			else if(document.webkitCancelFullScreen) document.webkitCancelFullScreen();
 			else if(document.msExitFullscreen) document.msExitFullscreen();
 		}
 		else{
+			$(".player-controlbar").addClass("fullscreen");
 			if(video.requestFullscreen) video.requestFullscreen();
 			else if(video.mozRequestFullScreen) video.mozRequestFullScreen();
 			else if(video.webkitRequestFullScreen) video.webkitRequestFullScreen();
