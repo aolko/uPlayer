@@ -48,7 +48,7 @@
 					<button class='player-button' id='next-video'>Next</button>
 					<!--write in css #volume-bar {display:none;} .volume:hover {display:inline-block;}-->
 					<button class='player-button volume' id='mute'>Mute</button>
-					<input oninput='volumeBar(this)' type='range' id='volume-bar' class='volume' min='0' max='1' step='0.1' value='.5'>
+					<input style='display:none' oninput='volumeBar(this)' type='range' id='volumebar' class='volume' min='0' max='1' step='0.1' value='.5'>
 					<span id='loadedPercent' class='player-text'>0:00</span>
 					<span>/</span>
 					<span id='loadedTotal' class='player-text'>00:00</span>

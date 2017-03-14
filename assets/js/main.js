@@ -95,9 +95,14 @@ if(Hls.isSupported()){
 
 	//volume control
 	var muteToggle = true;
-	document.getElementById("mute").addEventListener("click", function(){
+	var muteButton = document.getElementById("mute");
+	muteButton.addEventListener("click", function(){
 		video.muted = muteToggle;
 		muteToggle = !muteToggle;
+	});
+	
+	muteButton.addEventListener("mouseover", function() {
+		$("#volumebar").toggle(200).css("display", "inline-block");
 	});
 
 	//user set volume bar
