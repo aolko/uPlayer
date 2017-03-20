@@ -29,6 +29,7 @@ if(Hls.isSupported()){
 		var videoTime = this.currentTime;
 
 		if(videoTime > 99.99){
+			playToggle = false	// **changed
 			playPause();
 			this.currentTime = 0;
 		}
